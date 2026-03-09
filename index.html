@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>בית שאן מבפנים | אנשים. סיפורים. קהילה.</title>
+    <meta
+      name="description"
+      content="גלו את בית שאן כמו שלא הכרתם – סיורים, קולינריה, מפגשים מעוררי השראה. הכל מותאם אישית לקבוצה שלכם."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --orange: #d4812a;
+        --orange-light: #e8a44c;
+        --orange-dark: #b5691e;
+        --teal: #4a9b8e;
+        --teal-light: #6bbfb0;
+        --teal-dark: #3a7d72;
+        --gold: #c99a3a;
+        --brown: #8b5e3c;
+        --cream: #faf6f0;
+        --cream-dark: #f0e8da;
+        --text-dark: #2c2520;
+        --text-mid: #5a4d42;
+        --whatsapp: #25d366;
+        --whatsapp-hover: #1ebe57;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Heebo", sans-serif;
+        background: var(--cream);
+        color: var(--text-dark);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Frank Ruhl Libre", serif;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 3rem 1.5rem;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(44, 37, 32, 0.55) 0%,
+            rgba(74, 155, 142, 0.25) 50%,
+            rgba(212, 129, 42, 0.3) 100%
+          ),
+          url("https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=80")
+            center/cover no-repeat;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(250, 246, 240, 0) 60%,
+          var(--cream) 100%
+        );
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+      }
+
+      .logo-container {
+        margin-bottom: 2rem;
+      }
+
+      .logo-container img {
+        width: 220px;
+        height: auto;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        background: rgba(250, 246, 240, 0.9);
+        padding: 12px;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.8rem, 5vw, 3rem);
+        color: #fff;
+        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+        margin-bottom: 1.2rem;
+        font-weight: 900;
+      }
+
+      .hero p {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        color: rgba(255, 255, 255, 0.92);
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+        max-width: 600px;
+        margin: 0 auto 2.5rem;
+        line-height: 1.9;
+      }
+
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--whatsapp);
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 700;
+        padding: 18px 36px;
+        border-radius: 60px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35);
+        font-family: "Heebo", sans-serif;
+      }
+
+      .cta-btn:hover {
+        background: var(--whatsapp-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 32px rgba(37, 211, 102, 0.45);
+      }
+
+      .cta-btn svg {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+      }
+
+      .section {
+        padding: 5rem 1.5rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+        color: var(--orange-dark);
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .section-title span {
+        display: inline-block;
+        margin-left: 8px;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 1.15rem;
+        color: var(--text-mid);
+        max-width: 650px;
+        margin: 0 auto 3rem;
+        line-height: 1.9;
+      }
+
+      /* WHY US */
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .why-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 2rem 1.8rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(212, 129, 42, 0.12);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .why-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
+
+      .why-card .icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+      }
+
+      .why-card:nth-child(1) .icon {
+        background: rgba(212, 129, 42, 0.12);
+      }
+      .why-card:nth-child(2) .icon {
+        background: rgba(74, 155, 142, 0.12);
+      }
+      .why-card:nth-child(3) .icon {
+        background: rgba(201, 154, 58, 0.12);
+      }
+
+      .why-card h3 {
+        font-size: 1.2rem;
+        color: var(--text-dark);
+        margin-bottom: 0.6rem;
+        font-family: "Heebo", sans-serif;
+        font-weight: 700;
+      }
+
+      .why-card p {
+        color: var(--text-mid);
+        font-size: 0.98rem;
+        line-height: 1.8;
+      }
+
+      /* OFFERINGS */
+      .offerings-bg {
+        background: linear-gradient(135deg, var(--cream-dark) 0%, #e8ded2 100%);
+        padding: 5rem 1.5rem;
+      }
+
+      .offerings-inner {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .offering-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .offering-item {
+        background: #fff;
+        border-radius: 20px;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .offering-item:hover {
+        transform: translateY(-4px);
+      }
+
+      .offering-item .emoji {
+        font-size: 2.5rem;
+        margin-bottom: 0.8rem;
+        display: block;
+      }
+
+      .offering-item h3 {
+        font-size: 1.1rem;
+        color: var(--teal-dark);
+        margin-bottom: 0.5rem;
+        font-family: "Heebo", sans-serif;
+        font-weight: 700;
+      }
+
+      .offering-item p {
+        font-size: 0.92rem;
+        color: var(--text-mid);
+        line-height: 1.7;
+      }
+
+      /* HOW IT WORKS */
+      .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .steps::before {
+        content: "";
+        position: absolute;
+        right: 27px;
+        top: 32px;
+        bottom: 32px;
+        width: 3px;
+        background: linear-gradient(
+          to bottom,
+          var(--orange),
+          var(--teal),
+          var(--gold)
+        );
+        border-radius: 4px;
+      }
+
+      .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+        position: relative;
+      }
+
+      .step-number {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: #fff;
+        flex-shrink: 0;
+        z-index: 1;
+      }
+
+      .step:nth-child(1) .step-number {
+        background: var(--orange);
+      }
+      .step:nth-child(2) .step-number {
+        background: var(--teal);
+      }
+      .step:nth-child(3) .step-number {
+        background: var(--gold);
+      }
+
+      .step-content h3 {
+        font-size: 1.15rem;
+        margin-bottom: 0.3rem;
+        color: var(--text-dark);
+        font-family: "Heebo", sans-serif;
+        font-weight: 700;
+      }
+
+      .step-content p {
+        color: var(--text-mid);
+        font-size: 0.98rem;
+        line-height: 1.8;
+      }
+
+      /* TESTIMONIAL */
+      .testimonial-bg {
+        background: linear-gradient(
+          135deg,
+          var(--teal-dark) 0%,
+          var(--teal) 100%
+        );
+        padding: 4rem 1.5rem;
+      }
+
+      .testimonial {
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+        color: #fff;
+      }
+
+      .testimonial .quote-mark {
+        font-size: 4rem;
+        opacity: 0.3;
+        line-height: 1;
+        font-family: serif;
+      }
+
+      .testimonial blockquote {
+        font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+        line-height: 2;
+        margin: 1rem 0 1.5rem;
+        font-style: italic;
+      }
+
+      .testimonial cite {
+        font-style: normal;
+        font-size: 0.95rem;
+        opacity: 0.8;
+      }
+
+      /* FINAL CTA */
+      .final-cta {
+        text-align: center;
+        padding: 5rem 1.5rem;
+        background: linear-gradient(to bottom, var(--cream), #fff);
+      }
+
+      .final-cta h2 {
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+        color: var(--orange-dark);
+        margin-bottom: 1rem;
+      }
+
+      .final-cta p {
+        font-size: 1.1rem;
+        color: var(--text-mid);
+        margin-bottom: 2.5rem;
+        max-width: 500px;
+        margin-inline: auto;
+        line-height: 1.8;
+      }
+
+      .cta-btn-large {
+        font-size: 1.35rem;
+        padding: 22px 48px;
+        box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+      }
+
+      .cta-btn-large:hover {
+        box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--text-dark);
+        color: rgba(255, 255, 255, 0.7);
+        text-align: center;
+        padding: 3rem 1.5rem;
+      }
+
+      footer img {
+        width: 100px;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 1.2rem;
+        opacity: 0.9;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1.2rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: var(--orange-light);
+      }
+
+      footer .tagline {
+        font-size: 0.85rem;
+        line-height: 1.7;
+        max-width: 500px;
+        margin: 0 auto;
+        opacity: 0.6;
+      }
+
+      /* SCROLL ANIMATIONS */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* PULSE ANIMATION ON CTA */
+      @keyframes pulse-ring {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      .cta-btn {
+        animation: pulse-ring 2.5s infinite;
+      }
+      .cta-btn:hover {
+        animation: none;
+      }
+
+      /* DECORATIVE SEPARATOR */
+      .separator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin: 0 auto;
+        padding: 0.5rem 0;
+      }
+
+      .separator span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      .separator span:nth-child(1) {
+        background: var(--orange);
+      }
+      .separator span:nth-child(2) {
+        background: var(--teal);
+      }
+      .separator span:nth-child(3) {
+        background: var(--gold);
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          min-height: 90vh;
+          padding: 2rem 1rem;
+        }
+        .logo-container img {
+          width: 160px;
+          padding: 8px;
+        }
+        .section {
+          padding: 3.5rem 1rem;
+        }
+        .offerings-bg {
+          padding: 3.5rem 1rem;
+        }
+        .cta-btn {
+          font-size: 1rem;
+          padding: 16px 28px;
+        }
+        .cta-btn svg {
+          width: 24px;
+          height: 24px;
+        }
+        .cta-btn-large {
+          font-size: 1.15rem;
+          padding: 18px 32px;
+        }
+        .steps::before {
+          right: 23px;
+        }
+        .step-number {
+          width: 48px;
+          height: 48px;
+          font-size: 1.2rem;
+        }
+        .offering-list {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .offering-list {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="logo-container">
+          <img
+            src="betsheanlogo.jpg"
+            alt="בית שאן מבפנים – אנשים. סיפורים. קהילה."
+          />
+        </div>
+        <h1>לגלות את בית שאן כמו שלא הכרתם.</h1>
+        <p>
+          אנחנו תופרים עבורכם יום חווייתי ובלתי נשכח בעיר ובעמק – מסיורים מרתקים
+          ועד קולינריה מקומית ומפגשים מעוררי השראה. הכל מרוכז במקום אחד, מותאם
+          אישית לקבוצה שלכם.
+        </p>
+        <a
+          href="https://wa.me/972544480886?text=%D7%94%D7%99%D7%99!%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%A0%D7%97%D7%99%D7%AA%D7%94.%20%D7%90%D7%A0%D7%97%D7%A0%D7%95%20%D7%9E%D7%AA%D7%9B%D7%A0%D7%A0%D7%99%D7%9D%20%D7%91%D7%99%D7%A7%D7%95%D7%A8%20%D7%91%D7%91%D7%99%D7%AA%20%D7%A9%D7%90%D7%9F%20%D7%95%D7%A0%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%A2%D7%96%D7%A8%D7%95%20%D7%9C%D7%A0%D7%95%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA.%0A%0A*%D7%AA%D7%90%D7%A8%D7%99%D7%9A%20%D7%9E%D7%A9%D7%95%D7%A2%D7%A8:*%20%0A*%D7%92%D7%95%D7%93%D7%9C%20%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94:*%20%0A*%D7%A1%D7%95%D7%92%20%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94%20(%D7%A0%D7%95%D7%A2%D7%A8%2F%D7%9E%D7%91%D7%95%D7%92%D7%A8%D7%99%D7%9D%2F%D7%A6%D7%95%D7%95%D7%AA):*%20"
+          class="cta-btn"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            />
+          </svg>
+          בואו נתכנן את הביקור שלכם!
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== WHY US ===== -->
+    <section class="section">
+      <div class="separator"><span></span><span></span><span></span></div>
+      <h2 class="section-title fade-up"><span>🌟</span> למה לטייל איתנו?</h2>
+      <p class="section-subtitle fade-up">
+        כשאתם מגיעים לבית שאן דרכנו, אתם לא מקבלים עוד "יום כיף" רגיל. אתם
+        מקבלים כרטיס כניסה ללב של העיר:
+      </p>
+      <div class="why-grid">
+        <div class="why-card fade-up">
+          <div class="icon">🔑</div>
+          <h3>חיבור אותנטי</h3>
+          <p>
+            אנחנו מקומיים. אנחנו מכירים את האנשים, הסיפורים והפינות הנסתרות ששום
+            מדריך תיירים לא יראה לכם.
+          </p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="icon">🎯</div>
+          <h3>הכל במקום אחד</h3>
+          <p>
+            חסכו את כאב הראש. במקום לרדוף אחרי ספקים, מסעדות ומדריכים – אנחנו
+            בונים לכם תוכנית מושלמת מא' ועד ת'.
+          </p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="icon">💛</div>
+          <h3>תמיכה בקהילה</h3>
+          <p>
+            דרכנו אתם תומכים ישירות בעסקים קטנים, יזמים, אמנים ומנהיגות מקומית.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== OFFERINGS ===== -->
+    <section class="offerings-bg">
+      <div class="offerings-inner">
+        <h2 class="section-title fade-up"><span>🎒</span> מה אנחנו מציעים?</h2>
+        <p class="section-subtitle fade-up">
+          אנו מרכזים את מיטב הספקים המקומיים כדי להרכיב לכם את התמהיל המדויק:
+        </p>
+        <div class="offering-list">
+          <div class="offering-item fade-up">
+            <span class="emoji">👣</span>
+            <h3>סיורי שטח ותוכן</h3>
+            <p>מהיסטוריה ציונית ובניית הקהילה, ועד אמנות רחוב וחקלאות.</p>
+          </div>
+          <div class="offering-item fade-up">
+            <span class="emoji">🗣️</span>
+            <h3>מפגשים והרצאות</h3>
+            <p>שיחות עם יזמים חברתיים, מובילי דעה ודמויות השראה מקומיות.</p>
+          </div>
+          <div class="offering-item fade-up">
+            <span class="emoji">🍽️</span>
+            <h3>קולינריה</h3>
+            <p>החל מאירוח ביתי אותנטי ועד פריסות שטח וקייטרינג מקומי.</p>
+          </div>
+          <div class="offering-item fade-up">
+            <span class="emoji">🎨</span>
+            <h3>סדנאות</h3>
+            <p>גרפיטי, בישול, יצירה ואקטיביזם חברתי.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="section">
+      <h2 class="section-title fade-up">
+        <span>🛠️</span> איך זה עובד? פשוט מאוד!
+      </h2>
+      <div class="steps">
+        <div class="step fade-up">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>אתם שולחים הודעה</h3>
+            <p>מספרים לנו מתי אתם באים, כמה אתם ומה התקציב.</p>
+          </div>
+        </div>
+        <div class="step fade-up">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>אנחנו תופרים תוכנית</h3>
+            <p>שולחים לכם 2-3 אפשרויות ליום מושלם שמותאם בדיוק לאופי שלכם.</p>
+          </div>
+        </div>
+        <div class="step fade-up">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>אתם באים ליהנות</h3>
+            <p>
+              אחרי שבחרתם – אנחנו דואגים לתיאומים, אתם רק מגיעים וסופגים את
+              האווירה!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIAL ===== -->
+    <section class="testimonial-bg">
+      <div class="testimonial fade-up">
+        <div class="quote-mark">❝</div>
+        <blockquote>
+          חיפשנו דרך להכיר לנוער שלנו את הסיפור האמיתי של העיר וקיבלנו יום
+          מדהים, עשיר ומתוקתק ברמה הכי גבוהה. מומלץ בחום!
+        </blockquote>
+        <cite>— צוות תוכנית מנהיגות</cite>
+      </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section class="final-cta">
+      <h2 class="fade-up">מוכנים לצאת לדרך? 🧳</h2>
+      <p class="fade-up">
+        אל תשאירו את התכנון לרגע האחרון. שלחו לנו עכשיו הודעה ונרכיב לכם חוויה
+        בלתי נשכחת!
+      </p>
+      <a
+        href="https://wa.me/972544480886?text=%D7%94%D7%99%D7%99!%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%A0%D7%97%D7%99%D7%AA%D7%94.%20%D7%90%D7%A0%D7%97%D7%A0%D7%95%20%D7%9E%D7%AA%D7%9B%D7%A0%D7%A0%D7%99%D7%9D%20%D7%91%D7%99%D7%A7%D7%95%D7%A8%20%D7%91%D7%91%D7%99%D7%AA%20%D7%A9%D7%90%D7%9F%20%D7%95%D7%A0%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%A2%D7%96%D7%A8%D7%95%20%D7%9C%D7%A0%D7%95%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA.%0A%0A*%D7%AA%D7%90%D7%A8%D7%99%D7%9A%20%D7%9E%D7%A9%D7%95%D7%A2%D7%A8:*%20%0A*%D7%92%D7%95%D7%93%D7%9C%20%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94:*%20%0A*%D7%A1%D7%95%D7%92%20%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94%20(%D7%A0%D7%95%D7%A2%D7%A8%2F%D7%9E%D7%91%D7%95%D7%92%D7%A8%D7%99%D7%9D%2F%D7%A6%D7%95%D7%95%D7%AA):*%20"
+        class="cta-btn cta-btn-large fade-up"
+        target="_blank"
+        rel="noopener"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+          />
+        </svg>
+        דברו איתנו בוואטסאפ!
+      </a>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <img src="betsheanlogo.jpg" alt="בית שאן מבפנים" />
+      <div class="footer-links">
+        <a href="tel:+972XXXXXXXXX">📞 טלפון</a>
+        <a href="mailto:info@example.com">✉️ אימייל</a>
+      </div>
+      <p class="tagline">
+        מיזם מנהיגות מקומית לקידום תיירות קהילתית בבית שאן. שירות התיאום מבוצע
+        מול מיטב ספקי התוכן והתיירות באזור.
+      </p>
+    </footer>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      document
+        .querySelectorAll(".fade-up")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
