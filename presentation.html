@@ -85,6 +85,14 @@
         overflow-y: auto;
       }
 
+      #slide-3 {
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 32px;
+        padding-bottom: 120px;
+        overflow-y: auto;
+      }
+
       #slide-2 h2 {
         margin-bottom: 16px;
       }
@@ -343,12 +351,27 @@
         #slide-2 {
           padding: 24px 18px 120px;
         }
+        #slide-3 {
+          padding: 24px 18px 120px;
+        }
         .flow-story {
           width: 100%;
           padding: 8px;
         }
         .chat-message {
           max-width: 95%;
+        }
+        .controls {
+          bottom: 14px;
+          width: calc(100% - 24px);
+          gap: 10px;
+        }
+        button {
+          flex: 1;
+          min-width: 0;
+          padding: 10px 14px;
+          font-size: 0.95rem;
+          white-space: nowrap;
         }
       }
     </style>
