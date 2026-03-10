@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>בית שאן מבפנים - מצגת שותפים</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --teal: #5ca4b5;
+        --orange: #d98246;
+        --mustard: #e5b758;
+        --brown: #4a3831;
+        --bg-color: #faf8f5;
+        --text-color: #333;
+      }
+
+      body {
+        font-family: "Rubik", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        overflow: hidden;
+      }
+
+      .slider-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        box-sizing: border-box;
+        pointer-events: none;
+      }
+
+      .slide.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .logo {
+        max-width: 250px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: var(--brown);
+        font-size: 3rem;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      h2 {
+        color: var(--teal);
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      /* Flowchart Styles */
+      .flowchart {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        max-width: 1200px;
+      }
+
+      .step {
+        background: white;
+        border: 3px solid var(--teal);
+        border-radius: 12px;
+        padding: 20px;
+        width: 160px;
+        text-align: center;
+        font-weight: 500;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+        position: relative;
+        transition: transform 0.3s ease;
+      }
+
+      .step:hover {
+        transform: translateY(-5px);
+        border-color: var(--orange);
+      }
+
+      .step-number {
+        background: var(--mustard);
+        color: var(--brown);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        border: 2px solid white;
+      }
+
+      .arrow {
+        color: var(--orange);
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      /* Options Grid Styles */
+      .options-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1200px;
+        width: 100%;
+      }
+
+      .option-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        border-top: 8px solid var(--brown);
+        text-align: right;
+        position: relative;
+      }
+
+      .option-card h3 {
+        color: var(--brown);
+        margin-top: 0;
+        font-size: 1.4rem;
+      }
+
+      .option-card p {
+        line-height: 1.6;
+        font-size: 1.1rem;
+      }
+
+      .option-card.recommended {
+        border-top-color: var(--teal);
+        background-color: #f2f9fa;
+        transform: scale(1.05);
+      }
+
+      .badge {
+        position: absolute;
+        top: -15px;
+        left: 20px;
+        background: var(--teal);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+      }
+
+      .pros-cons {
+        margin-top: 15px;
+        font-size: 0.95rem;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+      }
+
+      .pros-cons span {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      /* Controls */
+      .controls {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+        z-index: 100;
+      }
+
+      button {
+        background-color: var(--orange);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 1.1rem;
+        border-radius: 30px;
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: bold;
+        transition: background 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      button:hover {
+        background-color: #c06d35;
+      }
+
+      button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .options-grid {
+          grid-template-columns: 1fr;
+        }
+        .option-card.recommended {
+          transform: scale(1);
+        }
+        .flowchart {
+          flex-direction: column;
+        }
+        .arrow {
+          transform: rotate(90deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-container">
+      <div class="slide active" id="slide-1">
+        <img
+          src="betsheanlogo.jpg"
+          alt="בית שאן מבפנים"
+          class="logo"
+          onerror="this.style.display = 'none'"
+        />
+        <h1>בית שאן מבפנים</h1>
+        <h2>בניית מנוע צמיחה תיירותי-קהילתי</h2>
+        <p style="font-size: 1.5rem; color: var(--brown)">
+          הצגת תהליך עבודה ומודלים עסקיים
+        </p>
+      </div>
+
+      <div class="slide" id="slide-2">
+        <h2>תהליך העבודה: מקצה לקצה</h2>
+        <div class="flowchart">
+          <div class="step">
+            <div class="step-number">1</div>
+            פנייה ראשונית<br /><span style="font-size: 0.8rem; color: #666"
+              >לקוח יוצר קשר</span
+            >
+          </div>
+          <div class="arrow">&larr;</div>
+          <div class="step">
+            <div class="step-number">2</div>
+            השלמת פרטים<br /><span style="font-size: 0.8rem; color: #666"
+              >איסוף נתונים לוגיסטיים</span
+            >
+          </div>
+          <div class="arrow">&larr;</div>
+          <div class="step">
+            <div class="step-number">3</div>
+            קול קורא<br /><span style="font-size: 0.8rem; color: #666"
+              >שליחה לקבוצת הספקים</span
+            >
+          </div>
+          <div class="arrow">&larr;</div>
+          <div class="step">
+            <div class="step-number">4</div>
+            הצעה ראשונית<br /><span style="font-size: 0.8rem; color: #666"
+              >בחירת אופציות מול הלקוח</span
+            >
+          </div>
+          <div class="arrow">&larr;</div>
+          <div class="step">
+            <div class="step-number">5</div>
+            אישור ספקים<br /><span style="font-size: 0.8rem; color: #666"
+              >שריון ותיאום סופי</span
+            >
+          </div>
+          <div class="arrow">&larr;</div>
+          <div
+            class="step"
+            style="border-color: var(--orange); background-color: #fff9f5"
+          >
+            <div
+              class="step-number"
+              style="background: var(--orange); color: white"
+            >
+              6
+            </div>
+            הצעת מחיר מפורטת<br /><span style="font-size: 0.8rem; color: #666"
+              >לחתימה וסגירה</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="slide" id="slide-3">
+        <h2>מודל עסקי: איך עובד התשלום?</h2>
+        <div class="options-grid">
+          <div class="option-card recommended">
+            <div class="badge">מומלץ להתחלה</div>
+            <h3>1. תשלום נפרד + דמי תיאום</h3>
+            <p>
+              הלקוח משלם ישירות לכל ספק עבור השירות שלו, ובנוסף משלם למיזם "דמי
+              תיאום וניהול" בנפרד.
+            </p>
+            <div class="pros-cons">
+              <span style="color: green">✔ שקיפות מלאה מול הלקוח</span>
+              <span style="color: green">✔ אפס אחריות משפטית על המיזם</span>
+              <span style="color: green">✔ קל מאוד ליישום מיידי</span>
+              <span style="color: red">✘ הלקוח מתעסק עם מספר תשלומים</span>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <h3>2. עמלה מהספקים (B2B)</h3>
+            <p>
+              הלקוח משלם ישירות לכל ספק את המחיר המלא. הספקים מעבירים עמלת
+              תיווך/שיווק (כ-10-15%) חזרה למיזם.
+            </p>
+            <div class="pros-cons">
+              <span style="color: green">✔ נוח ללקוח (לא משלם "תוספת")</span>
+              <span style="color: green">✔ מסיר אחריות לוגיסטית מהמיזם</span>
+              <span style="color: red">✘ דורש אמון וגבייה מול הספקים</span>
+              <span style="color: red">✘ פחות רווחי במקרים של תקציב פתוח</span>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <h3>3. One-Stop-Shop (תשלום אחוד)</h3>
+            <p>
+              הלקוח מעביר תשלום אחד מרוכז למיזם עבור כל יום הסיור. המיזם משלם
+              לספקים ומשאיר אצלו את הרווח/העמלה.
+            </p>
+            <div class="pros-cons">
+              <span style="color: green">✔ חוויית לקוח מושלמת (תשלום אחד)</span>
+              <span style="color: green">✔ שליטה מלאה על שורת הרווח</span>
+              <span style="color: red"
+                >✘ דורש התנהלות כספית/חשבונאית מורכבת</span
+              >
+              <span style="color: red"
+                >✘ מטיל את האחריות לביטולים ותקלות על המיזם</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="prevBtn" onclick="changeSlide(-1)" disabled>❮ הקודם</button>
+      <button id="nextBtn" onclick="changeSlide(1)">הבא ❯</button>
+    </div>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+
+      function changeSlide(direction) {
+        slides[currentSlide].classList.remove("active");
+        currentSlide += direction;
+        slides[currentSlide].classList.add("active");
+        updateButtons();
+      }
+
+      function updateButtons() {
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === slides.length - 1;
+      }
+    </script>
+  </body>
+</html>
