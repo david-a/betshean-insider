@@ -8,10 +8,11 @@
       name="description"
       content="גלו את בית שאן כמו שלא הכרתם – סיורים, קולינריה, מפגשים מעוררי השראה. הכל מותאם אישית לקבוצה שלכם."
     />
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -37,13 +38,12 @@
         padding: 0;
         box-sizing: border-box;
       }
-
       html {
         scroll-behavior: smooth;
       }
 
       body {
-        font-family: "Heebo", sans-serif;
+        font-family: "Assistant", sans-serif;
         background: var(--cream);
         color: var(--text-dark);
         line-height: 1.7;
@@ -53,9 +53,10 @@
       h1,
       h2,
       h3 {
-        font-family: "Frank Ruhl Libre", serif;
+        font-family: "Assistant", sans-serif;
       }
 
+      /* ===== HERO ===== */
       .hero {
         position: relative;
         min-height: 100vh;
@@ -68,11 +69,11 @@
         background:
           linear-gradient(
             135deg,
-            rgba(44, 37, 32, 0.55) 0%,
-            rgba(74, 155, 142, 0.25) 50%,
-            rgba(212, 129, 42, 0.3) 100%
+            rgba(44, 37, 32, 0.6) 0%,
+            rgba(74, 155, 142, 0.3) 50%,
+            rgba(212, 129, 42, 0.35) 100%
           ),
-          url("https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=80")
+          url("https://images.unsplash.com/photo-1532969476555-7a4eb819a357?w=1600&q=80")
             center/cover no-repeat;
       }
 
@@ -91,20 +92,27 @@
       .hero-content {
         position: relative;
         z-index: 1;
-        max-width: 700px;
+        max-width: 750px;
       }
 
       .logo-container {
-        margin-bottom: 2rem;
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        z-index: 2;
+        width: 96px;
+        height: 96px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        background: rgba(250, 246, 240, 0.95);
       }
 
       .logo-container img {
-        width: 220px;
-        height: auto;
-        border-radius: 16px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        background: rgba(250, 246, 240, 0.9);
-        padding: 12px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
       }
 
       .hero h1 {
@@ -124,6 +132,7 @@
         line-height: 1.9;
       }
 
+      /* ===== CTA BUTTONS ===== */
       .cta-btn {
         display: inline-flex;
         align-items: center;
@@ -137,7 +146,7 @@
         text-decoration: none;
         transition: all 0.3s ease;
         box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35);
-        font-family: "Heebo", sans-serif;
+        font-family: "Assistant", sans-serif;
       }
 
       .cta-btn:hover {
@@ -152,6 +161,7 @@
         flex-shrink: 0;
       }
 
+      /* ===== SECTIONS ===== */
       .section {
         padding: 5rem 1.5rem;
         max-width: 900px;
@@ -163,11 +173,16 @@
         color: var(--orange-dark);
         margin-bottom: 1.5rem;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
       }
 
-      .section-title span {
-        display: inline-block;
-        margin-left: 8px;
+      .section-title .sec-icon {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
       }
 
       .section-subtitle {
@@ -179,7 +194,7 @@
         line-height: 1.9;
       }
 
-      /* WHY US */
+      /* ===== WHY US ===== */
       .why-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -202,32 +217,39 @@
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       }
 
-      .why-card .icon {
-        width: 56px;
-        height: 56px;
+      .why-card .icon-wrap {
+        width: 60px;
+        height: 60px;
         border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.6rem;
         margin-bottom: 1rem;
       }
 
-      .why-card:nth-child(1) .icon {
+      .why-card .icon-wrap svg {
+        width: 30px;
+        height: 30px;
+      }
+
+      .why-card:nth-child(1) .icon-wrap {
         background: rgba(212, 129, 42, 0.12);
+        color: var(--orange);
       }
-      .why-card:nth-child(2) .icon {
+      .why-card:nth-child(2) .icon-wrap {
         background: rgba(74, 155, 142, 0.12);
+        color: var(--teal);
       }
-      .why-card:nth-child(3) .icon {
+      .why-card:nth-child(3) .icon-wrap {
         background: rgba(201, 154, 58, 0.12);
+        color: var(--gold);
       }
 
       .why-card h3 {
         font-size: 1.2rem;
         color: var(--text-dark);
         margin-bottom: 0.6rem;
-        font-family: "Heebo", sans-serif;
+        font-family: "Assistant", sans-serif;
         font-weight: 700;
       }
 
@@ -237,7 +259,7 @@
         line-height: 1.8;
       }
 
-      /* OFFERINGS */
+      /* ===== OFFERINGS ===== */
       .offerings-bg {
         background: linear-gradient(135deg, var(--cream-dark) 0%, #e8ded2 100%);
         padding: 5rem 1.5rem;
@@ -261,23 +283,74 @@
         text-align: center;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         transition: transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .offering-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 4px;
+        border-radius: 20px 20px 0 0;
+      }
+
+      .offering-item:nth-child(1)::before {
+        background: var(--orange);
+      }
+      .offering-item:nth-child(2)::before {
+        background: var(--teal);
+      }
+      .offering-item:nth-child(3)::before {
+        background: var(--gold);
+      }
+      .offering-item:nth-child(4)::before {
+        background: var(--brown);
       }
 
       .offering-item:hover {
         transform: translateY(-4px);
       }
 
-      .offering-item .emoji {
-        font-size: 2.5rem;
-        margin-bottom: 0.8rem;
-        display: block;
+      .offering-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+      }
+
+      .offering-icon svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      .offering-item:nth-child(1) .offering-icon {
+        background: rgba(212, 129, 42, 0.1);
+        color: var(--orange);
+      }
+      .offering-item:nth-child(2) .offering-icon {
+        background: rgba(74, 155, 142, 0.1);
+        color: var(--teal);
+      }
+      .offering-item:nth-child(3) .offering-icon {
+        background: rgba(201, 154, 58, 0.1);
+        color: var(--gold);
+      }
+      .offering-item:nth-child(4) .offering-icon {
+        background: rgba(139, 94, 60, 0.1);
+        color: var(--brown);
       }
 
       .offering-item h3 {
         font-size: 1.1rem;
         color: var(--teal-dark);
         margin-bottom: 0.5rem;
-        font-family: "Heebo", sans-serif;
+        font-family: "Assistant", sans-serif;
         font-weight: 700;
       }
 
@@ -287,7 +360,108 @@
         line-height: 1.7;
       }
 
-      /* HOW IT WORKS */
+      /* ===== PHOTO GALLERY ===== */
+      .photo-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 210px;
+        gap: 0.6rem;
+        padding: 2rem 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .photo-gallery .gallery-item {
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .photo-gallery .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: opacity 0.4s ease, transform 0.5s ease;
+        opacity: 0.88;
+      }
+
+      .photo-gallery .gallery-item:hover img,
+      .photo-gallery .gallery-item.touched img {
+        opacity: 1;
+        transform: scale(1.03);
+      }
+
+      /*
+       * Desktop layout – zigzag rhythm with landscape proportions
+       * Row 1: wide + narrow
+       * Row 2: narrow + wide (mirror)
+       * Row 3: three equal (rhythm break)
+       * Row 4: wide + narrow
+       * Row 5: closing panoramic
+       */
+      .photo-gallery .gallery-item:nth-child(1)  { grid-area: 1 / 1 / 2 / 3; }
+      .photo-gallery .gallery-item:nth-child(2)  { grid-area: 1 / 3 / 2 / 4; }
+      .photo-gallery .gallery-item:nth-child(3)  { grid-area: 2 / 1 / 3 / 2; }
+      .photo-gallery .gallery-item:nth-child(4)  { grid-area: 2 / 2 / 3 / 4; }
+      .photo-gallery .gallery-item:nth-child(5)  { grid-area: 3 / 1 / 4 / 2; }
+      .photo-gallery .gallery-item:nth-child(6)  { grid-area: 3 / 2 / 4 / 3; }
+      .photo-gallery .gallery-item:nth-child(7)  { grid-area: 3 / 3 / 4 / 4; }
+      .photo-gallery .gallery-item:nth-child(8)  { grid-area: 4 / 1 / 5 / 3; }
+      .photo-gallery .gallery-item:nth-child(9)  { grid-area: 4 / 3 / 5 / 4; }
+      .photo-gallery .gallery-item:nth-child(10) { grid-area: 5 / 1 / 7 / 4; }
+
+      .photo-gallery .gallery-item .gallery-title {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.7) 0%,
+          rgba(0, 0, 0, 0.25) 40%,
+          transparent 65%
+        );
+        display: flex;
+        align-items: flex-end;
+        padding: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      .photo-gallery .gallery-item:hover .gallery-title,
+      .photo-gallery .gallery-item.touched .gallery-title {
+        opacity: 1;
+      }
+
+      .photo-gallery .gallery-item .gallery-title span {
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+        line-height: 1.4;
+      }
+
+      @media (max-width: 768px) {
+        .photo-gallery {
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 120px;
+          gap: 0.5rem;
+          padding: 1.5rem 0.75rem;
+        }
+        .photo-gallery .gallery-item:nth-child(1)  { grid-area: 1 / 1 / 2 / 3; }
+        .photo-gallery .gallery-item:nth-child(2)  { grid-area: 2 / 1 / 3 / 2; }
+        .photo-gallery .gallery-item:nth-child(3)  { grid-area: 2 / 2 / 3 / 3; }
+        .photo-gallery .gallery-item:nth-child(4)  { grid-area: 3 / 1 / 4 / 2; }
+        .photo-gallery .gallery-item:nth-child(5)  { grid-area: 3 / 2 / 4 / 3; }
+        .photo-gallery .gallery-item:nth-child(6)  { grid-area: 4 / 1 / 5 / 3; }
+        .photo-gallery .gallery-item:nth-child(7)  { grid-area: 5 / 1 / 6 / 2; }
+        .photo-gallery .gallery-item:nth-child(8)  { grid-area: 5 / 2 / 6 / 3; }
+        .photo-gallery .gallery-item:nth-child(9)  { grid-area: 6 / 1 / 7 / 2; }
+        .photo-gallery .gallery-item:nth-child(10) { grid-area: 6 / 2 / 7 / 3; }
+      }
+
+      /* ===== HOW IT WORKS ===== */
       .steps {
         display: flex;
         flex-direction: column;
@@ -349,7 +523,7 @@
         font-size: 1.15rem;
         margin-bottom: 0.3rem;
         color: var(--text-dark);
-        font-family: "Heebo", sans-serif;
+        font-family: "Assistant", sans-serif;
         font-weight: 700;
       }
 
@@ -359,14 +533,17 @@
         line-height: 1.8;
       }
 
-      /* TESTIMONIAL */
+      /* ===== TESTIMONIAL ===== */
       .testimonial-bg {
-        background: linear-gradient(
-          135deg,
-          var(--teal-dark) 0%,
-          var(--teal) 100%
-        );
-        padding: 4rem 1.5rem;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(58, 125, 114, 0.92) 0%,
+            rgba(74, 155, 142, 0.92) 100%
+          ),
+          url("https://images.unsplash.com/photo-1532969476555-7a4eb819a357?w=1200&q=60")
+            center/cover no-repeat;
+        padding: 4.5rem 1.5rem;
       }
 
       .testimonial {
@@ -376,11 +553,10 @@
         color: #fff;
       }
 
-      .testimonial .quote-mark {
-        font-size: 4rem;
-        opacity: 0.3;
-        line-height: 1;
-        font-family: serif;
+      .testimonial .quote-icon svg {
+        width: 40px;
+        height: 40px;
+        opacity: 0.4;
       }
 
       .testimonial blockquote {
@@ -396,7 +572,7 @@
         opacity: 0.8;
       }
 
-      /* FINAL CTA */
+      /* ===== FINAL CTA ===== */
       .final-cta {
         text-align: center;
         padding: 5rem 1.5rem;
@@ -407,6 +583,15 @@
         font-size: clamp(1.6rem, 4vw, 2.4rem);
         color: var(--orange-dark);
         margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .final-cta h2 .sec-icon {
+        width: 36px;
+        height: 36px;
       }
 
       .final-cta p {
@@ -428,7 +613,7 @@
         box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
       }
 
-      /* FOOTER */
+      /* ===== FOOTER ===== */
       footer {
         background: var(--text-dark);
         color: rgba(255, 255, 255, 0.7);
@@ -437,9 +622,9 @@
       }
 
       footer img {
-        width: 100px;
+        width: 120px;
         height: auto;
-        border-radius: 10px;
+        border-radius: 12px;
         margin-bottom: 1.2rem;
         opacity: 0.9;
       }
@@ -457,6 +642,14 @@
         text-decoration: none;
         font-size: 0.95rem;
         transition: color 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .footer-links a svg {
+        width: 18px;
+        height: 18px;
       }
 
       .footer-links a:hover {
@@ -471,7 +664,7 @@
         opacity: 0.6;
       }
 
-      /* SCROLL ANIMATIONS */
+      /* ===== ANIMATIONS ===== */
       .fade-up {
         opacity: 0;
         transform: translateY(30px);
@@ -485,7 +678,6 @@
         transform: translateY(0);
       }
 
-      /* PULSE ANIMATION ON CTA */
       @keyframes pulse-ring {
         0% {
           box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
@@ -505,7 +697,6 @@
         animation: none;
       }
 
-      /* DECORATIVE SEPARATOR */
       .separator {
         display: flex;
         align-items: center;
@@ -531,14 +722,17 @@
         background: var(--gold);
       }
 
+      /* ===== RESPONSIVE ===== */
       @media (max-width: 640px) {
         .hero {
           min-height: 90vh;
           padding: 2rem 1rem;
         }
-        .logo-container img {
-          width: 160px;
-          padding: 8px;
+        .logo-container {
+          position: static;
+          width: 140px;
+          height: 140px;
+          margin-bottom: 1.5rem;
         }
         .section {
           padding: 3.5rem 1rem;
@@ -581,21 +775,21 @@
   <body>
     <!-- ===== HERO ===== -->
     <section class="hero">
+      <div class="logo-container">
+        <img
+          src="betsheanlogo.jpg"
+          alt="בית שאן מבפנים – אנשים. סיפורים. קהילה."
+        />
+      </div>
       <div class="hero-content">
-        <div class="logo-container">
-          <img
-            src="betsheanlogo.jpg"
-            alt="בית שאן מבפנים – אנשים. סיפורים. קהילה."
-          />
-        </div>
-        <h1>לגלות את בית שאן כמו שלא הכרתם.</h1>
+        <h1>בואו לגלות את בית שאן, מבפנים.</h1>
         <p>
           אנחנו תופרים עבורכם יום חווייתי ובלתי נשכח בעיר ובעמק – מסיורים מרתקים
           ועד קולינריה מקומית ומפגשים מעוררי השראה. הכל מרוכז במקום אחד, מותאם
           אישית לקבוצה שלכם.
         </p>
         <a
-          href="https://wa.me/972544480886?text=%D7%94%D7%99%D7%99!%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%A0%D7%97%D7%99%D7%AA%D7%94.%20%D7%90%D7%A0%D7%97%D7%A0%D7%95%20%D7%9E%D7%AA%D7%9B%D7%A0%D7%A0%D7%99%D7%9D%20%D7%91%D7%99%D7%A7%D7%95%D7%A8%20%D7%91%D7%91%D7%99%D7%AA%20%D7%A9%D7%90%D7%9F%20%D7%95%D7%A0%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%A2%D7%96%D7%A8%D7%95%20%D7%9C%D7%A0%D7%95%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA.%0A%0A*%D7%AA%D7%90%D7%A8%D7%99%D7%9A%20%D7%9E%D7%A9%D7%95%D7%A2%D7%A8:*%20%0A*%D7%92%D7%95%D7%93%D7%9C%20%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94:*%20%0A*%D7%A1%D7%95%D7%92%20%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94%20(%D7%A0%D7%95%D7%A2%D7%A8%2F%D7%9E%D7%91%D7%95%D7%92%D7%A8%D7%99%D7%9D%2F%D7%A6%D7%95%D7%95%D7%AA):*%20"
+          href="https://wa.me/972544480886?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A0%D7%97%D7%A0%D7%95%20%D7%9E%D7%AA%D7%9B%D7%A0%D7%A0%D7%99%D7%9D%20%D7%91%D7%99%D7%A7%D7%95%D7%A8%20%D7%91%D7%91%D7%99%D7%AA%20%D7%A9%D7%90%D7%9F%20%D7%95%D7%A0%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%A2%D7%96%D7%A8%D7%95%20%D7%9C%D7%A0%D7%95%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA.%20*%D7%AA%D7%90%D7%A8%D7%99%D7%9A%20%D7%9E%D7%A9%D7%95%D7%A2%D7%A8%3A*%20*%D7%92%D7%95%D7%93%D7%9C%20%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94%3A*%20*%D7%A7%D7%A6%D7%AA%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94%20%D7%95%D7%90%D7%95%D7%A4%D7%99%20%D7%94%D7%91%D7%99%D7%A7%D7%95%D7%A8*"
           class="cta-btn"
           target="_blank"
           rel="noopener"
@@ -613,14 +807,52 @@
     <!-- ===== WHY US ===== -->
     <section class="section">
       <div class="separator"><span></span><span></span><span></span></div>
-      <h2 class="section-title fade-up"><span>🌟</span> למה לטייל איתנו?</h2>
+      <h2 class="section-title fade-up">
+        <!-- Sparkles icon -->
+        <svg
+          class="sec-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3z"
+          />
+          <path d="M5 3v4" />
+          <path d="M3 5h4" />
+          <path d="M19 17v4" />
+          <path d="M17 19h4" />
+        </svg>
+        למה לטייל איתנו?
+      </h2>
       <p class="section-subtitle fade-up">
         כשאתם מגיעים לבית שאן דרכנו, אתם לא מקבלים עוד "יום כיף" רגיל. אתם
         מקבלים כרטיס כניסה ללב של העיר:
       </p>
       <div class="why-grid">
         <div class="why-card fade-up">
-          <div class="icon">🔑</div>
+          <div class="icon-wrap">
+            <!-- Door Open icon -->
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M13 4h3a2 2 0 0 1 2 2v14" />
+              <path d="M2 20h3" />
+              <path d="M13 20h9" />
+              <path d="M10 12v.01" />
+              <path
+                d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561z"
+              />
+            </svg>
+          </div>
           <h3>חיבור אותנטי</h3>
           <p>
             אנחנו מקומיים. אנחנו מכירים את האנשים, הסיפורים והפינות הנסתרות ששום
@@ -628,7 +860,25 @@
           </p>
         </div>
         <div class="why-card fade-up">
-          <div class="icon">🎯</div>
+          <div class="icon-wrap">
+            <!-- Package Check icon -->
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m16 16 2 2 4-4" />
+              <path
+                d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"
+              />
+              <path d="m7.5 4.27 9 5.15" />
+              <polyline points="3.29 7 12 12 20.71 7" />
+              <line x1="12" y1="22" x2="12" y2="12" />
+            </svg>
+          </div>
           <h3>הכל במקום אחד</h3>
           <p>
             חסכו את כאב הראש. במקום לרדוף אחרי ספקים, מסעדות ומדריכים – אנחנו
@@ -636,7 +886,26 @@
           </p>
         </div>
         <div class="why-card fade-up">
-          <div class="icon">💛</div>
+          <div class="icon-wrap">
+            <!-- Heart Handshake icon -->
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+              />
+              <path
+                d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"
+              />
+              <path d="m18 15-2-2" />
+              <path d="m15 18-2-2" />
+            </svg>
+          </div>
           <h3>תמיכה בקהילה</h3>
           <p>
             דרכנו אתם תומכים ישירות בעסקים קטנים, יזמים, אמנים ומנהיגות מקומית.
@@ -645,31 +914,208 @@
       </div>
     </section>
 
+    <!-- ===== PHOTO GALLERY ===== -->
+    <div class="photo-gallery">
+      <div class="gallery-item">
+        <img
+          src="betshean-havaiot/תצפית תל בית שאן – סיפור ההיסטוריה.png"
+          alt="תצפית תל בית שאן – סיפור ההיסטוריה"
+          loading="lazy"
+        />
+        <div class="gallery-title">
+          <span>תצפית תל בית שאן – סיפור ההיסטוריה</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="betshean-havaiot/אירוח אותנטי – סדנת בישול משפחתית.png"
+          alt="אירוח אותנטי – סדנת בישול משפחתית"
+          loading="lazy"
+        />
+        <div class="gallery-title">
+          <span>אירוח אותנטי – סדנת בישול משפחתית</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="betshean-havaiot/המטבח של מזל – אירוח ביתי.png"
+          alt="המטבח של מזל – אירוח ביתי"
+          loading="lazy"
+        />
+        <div class="gallery-title"><span>המטבח של מזל – אירוח ביתי</span></div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="betshean-havaiot/קיימות בפריפריה – סיור מחזור שכונתי.png"
+          alt="קיימות בפריפריה – סיור מחזור שכונתי"
+          loading="lazy"
+        />
+        <div class="gallery-title">
+          <span>קיימות בפריפריה – סיור מחזור שכונתי</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="betshean-havaiot/מנהיגות צעירה – פאנל הסברה.png"
+          alt="מנהיגות צעירה – פאנל הסברה"
+          loading="lazy"
+        />
+        <div class="gallery-title"><span>מנהיגות צעירה – פאנל הסברה</span></div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="betshean-havaiot/סיור בין חורבן לתקומה.png"
+          alt="סיור בין חורבן לתקומה"
+          loading="lazy"
+        />
+        <div class="gallery-title"><span>סיור בין חורבן לתקומה</span></div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="betshean-havaiot/פלאפל וגריל 'הניצחון' – ארוחה קבוצתית.png"
+          alt="פלאפל וגריל הניצחון – ארוחה קבוצתית"
+          loading="lazy"
+        />
+        <div class="gallery-title">
+          <span>פלאפל וגריל 'הניצחון' – ארוחה קבוצתית</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="betshean-havaiot/סטודיו 'צבע מקומי' – אמנות רחוב.png"
+          alt="סטודיו צבע מקומי – אמנות רחוב"
+          loading="lazy"
+        />
+        <div class="gallery-title">
+          <span>סטודיו 'צבע מקומי' – אמנות רחוב</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="betshean-havaiot/חוות 'שורשים' – חקלאות קהילתית.png"
+          alt="חוות שורשים – חקלאות קהילתית"
+          loading="lazy"
+        />
+        <div class="gallery-title">
+          <span>חוות 'שורשים' – חקלאות קהילתית</span>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img
+          src="betshean-havaiot/ה'האב' – מרחב ליזמות צעירה.png"
+          alt="ההאב – מרחב ליזמות צעירה"
+          loading="lazy"
+        />
+        <div class="gallery-title"><span>ה'האב' – מרחב ליזמות צעירה</span></div>
+      </div>
+    </div>
+
     <!-- ===== OFFERINGS ===== -->
     <section class="offerings-bg">
       <div class="offerings-inner">
-        <h2 class="section-title fade-up"><span>🎒</span> מה אנחנו מציעים?</h2>
+        <h2 class="section-title fade-up">
+          <!-- Map icon -->
+          <svg
+            class="sec-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"
+            />
+            <path d="M15 5.764v15" />
+            <path d="M9 3.236v15" />
+          </svg>
+          מה אנחנו מציעים?
+        </h2>
         <p class="section-subtitle fade-up">
           אנו מרכזים את מיטב הספקים המקומיים כדי להרכיב לכם את התמהיל המדויק:
         </p>
         <div class="offering-list">
           <div class="offering-item fade-up">
-            <span class="emoji">👣</span>
+            <div class="offering-icon">
+              <!-- Compass icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polygon
+                  points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"
+                />
+              </svg>
+            </div>
             <h3>סיורי שטח ותוכן</h3>
             <p>מהיסטוריה ציונית ובניית הקהילה, ועד אמנות רחוב וחקלאות.</p>
           </div>
           <div class="offering-item fade-up">
-            <span class="emoji">🗣️</span>
+            <div class="offering-icon">
+              <!-- Users icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
             <h3>מפגשים והרצאות</h3>
             <p>שיחות עם יזמים חברתיים, מובילי דעה ודמויות השראה מקומיות.</p>
           </div>
           <div class="offering-item fade-up">
-            <span class="emoji">🍽️</span>
+            <div class="offering-icon">
+              <!-- Chef Hat / Utensils icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"
+                />
+                <path d="M6 17h12" />
+              </svg>
+            </div>
             <h3>קולינריה</h3>
             <p>החל מאירוח ביתי אותנטי ועד פריסות שטח וקייטרינג מקומי.</p>
           </div>
           <div class="offering-item fade-up">
-            <span class="emoji">🎨</span>
+            <div class="offering-icon">
+              <!-- Palette icon -->
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+                <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+                <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+                <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+                <path
+                  d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"
+                />
+              </svg>
+            </div>
             <h3>סדנאות</h3>
             <p>גרפיטי, בישול, יצירה ואקטיביזם חברתי.</p>
           </div>
@@ -680,7 +1126,21 @@
     <!-- ===== HOW IT WORKS ===== -->
     <section class="section">
       <h2 class="section-title fade-up">
-        <span>🛠️</span> איך זה עובד? פשוט מאוד!
+        <!-- Route / Workflow icon -->
+        <svg
+          class="sec-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="6" cy="19" r="3" />
+          <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+          <circle cx="18" cy="5" r="3" />
+        </svg>
+        איך זה עובד? פשוט מאוד!
       </h2>
       <div class="steps">
         <div class="step fade-up">
@@ -713,7 +1173,17 @@
     <!-- ===== TESTIMONIAL ===== -->
     <section class="testimonial-bg">
       <div class="testimonial fade-up">
-        <div class="quote-mark">❝</div>
+        <div class="quote-icon">
+          <!-- Quote icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
+            />
+            <path
+              d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
+            />
+          </svg>
+        </div>
         <blockquote>
           חיפשנו דרך להכיר לנוער שלנו את הסיפור האמיתי של העיר וקיבלנו יום
           מדהים, עשיר ומתוקתק ברמה הכי גבוהה. מומלץ בחום!
@@ -724,13 +1194,28 @@
 
     <!-- ===== FINAL CTA ===== -->
     <section class="final-cta">
-      <h2 class="fade-up">מוכנים לצאת לדרך? 🧳</h2>
+      <h2 class="fade-up">
+        <!-- MapPin icon -->
+        <svg
+          class="sec-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        מוכנים לצאת לדרך?
+      </h2>
       <p class="fade-up">
         אל תשאירו את התכנון לרגע האחרון. שלחו לנו עכשיו הודעה ונרכיב לכם חוויה
         בלתי נשכחת!
       </p>
       <a
-        href="https://wa.me/972544480886?text=%D7%94%D7%99%D7%99!%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%93%D7%A3%20%D7%94%D7%A0%D7%97%D7%99%D7%AA%D7%94.%20%D7%90%D7%A0%D7%97%D7%A0%D7%95%20%D7%9E%D7%AA%D7%9B%D7%A0%D7%A0%D7%99%D7%9D%20%D7%91%D7%99%D7%A7%D7%95%D7%A8%20%D7%91%D7%91%D7%99%D7%AA%20%D7%A9%D7%90%D7%9F%20%D7%95%D7%A0%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%A2%D7%96%D7%A8%D7%95%20%D7%9C%D7%A0%D7%95%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA.%0A%0A*%D7%AA%D7%90%D7%A8%D7%99%D7%9A%20%D7%9E%D7%A9%D7%95%D7%A2%D7%A8:*%20%0A*%D7%92%D7%95%D7%93%D7%9C%20%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94:*%20%0A*%D7%A1%D7%95%D7%92%20%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94%20(%D7%A0%D7%95%D7%A2%D7%A8%2F%D7%9E%D7%91%D7%95%D7%92%D7%A8%D7%99%D7%9D%2F%D7%A6%D7%95%D7%95%D7%AA):*%20"
+        href="https://wa.me/972544480886?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A0%D7%97%D7%A0%D7%95%20%D7%9E%D7%AA%D7%9B%D7%A0%D7%A0%D7%99%D7%9D%20%D7%91%D7%99%D7%A7%D7%95%D7%A8%20%D7%91%D7%91%D7%99%D7%AA%20%D7%A9%D7%90%D7%9F%20%D7%95%D7%A0%D7%A9%D7%9E%D7%97%20%D7%A9%D7%AA%D7%A2%D7%96%D7%A8%D7%95%20%D7%9C%D7%A0%D7%95%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA.%20*%D7%AA%D7%90%D7%A8%D7%99%D7%9A%20%D7%9E%D7%A9%D7%95%D7%A2%D7%A8%3A*%20*%D7%92%D7%95%D7%93%D7%9C%20%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94%3A*%20*%D7%A7%D7%A6%D7%AA%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%91%D7%95%D7%A6%D7%94%20%D7%95%D7%90%D7%95%D7%A4%D7%99%20%D7%94%D7%91%D7%99%D7%A7%D7%95%D7%A8*"
         class="cta-btn cta-btn-large fade-up"
         target="_blank"
         rel="noopener"
@@ -748,8 +1233,35 @@
     <footer>
       <img src="betsheanlogo.jpg" alt="בית שאן מבפנים" />
       <div class="footer-links">
-        <a href="tel:+972XXXXXXXXX">📞 טלפון</a>
-        <a href="mailto:info@example.com">✉️ אימייל</a>
+        <a href="tel:+972XXXXXXXXX">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+            />
+          </svg>
+          טלפון
+        </a>
+        <a href="mailto:info@example.com">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect width="20" height="16" x="2" y="4" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+          אימייל
+        </a>
       </div>
       <p class="tagline">
         מיזם מנהיגות מקומית לקידום תיירות קהילתית בבית שאן. שירות התיאום מבוצע
@@ -758,6 +1270,31 @@
     </footer>
 
     <script>
+      // Random hero background on load (current + betshean-havaiot images)
+      (function () {
+        const heroImages = [
+          "https://images.unsplash.com/photo-1532969476555-7a4eb819a357?w=1600&q=80",
+          "betshean-havaiot/תצפית תל בית שאן – סיפור ההיסטוריה.png",
+          "betshean-havaiot/אירוח אותנטי – סדנת בישול משפחתית.png",
+          "betshean-havaiot/המטבח של מזל – אירוח ביתי.png",
+          "betshean-havaiot/קיימות בפריפריה – סיור מחזור שכונתי.png",
+          "betshean-havaiot/מנהיגות צעירה – פאנל הסברה.png",
+          "betshean-havaiot/סיור בין חורבן לתקומה.png",
+          "betshean-havaiot/פלאפל וגריל 'הניצחון' – ארוחה קבוצתית.png",
+          "betshean-havaiot/סטודיו 'צבע מקומי' – אמנות רחוב.png",
+          "betshean-havaiot/חוות 'שורשים' – חקלאות קהילתית.png",
+          "betshean-havaiot/ה'האב' – מרחב ליזמות צעירה.png",
+        ];
+        const hero = document.querySelector(".hero");
+        if (hero) {
+          const img = heroImages[Math.floor(Math.random() * heroImages.length)];
+          const gradient =
+            "linear-gradient(135deg, rgba(44, 37, 32, 0.6) 0%, rgba(74, 155, 142, 0.3) 50%, rgba(212, 129, 42, 0.35) 100%)";
+          hero.style.background =
+            gradient + ', url("' + img + '") center/cover no-repeat';
+        }
+      })();
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -772,6 +1309,20 @@
       document
         .querySelectorAll(".fade-up")
         .forEach((el) => observer.observe(el));
+
+      // Gallery: show title on touch (mobile)
+      document
+        .querySelectorAll(".photo-gallery .gallery-item")
+        .forEach((item) => {
+          item.addEventListener("click", (e) => {
+            const gallery = item.closest(".photo-gallery");
+            const wasTouched = item.classList.contains("touched");
+            gallery
+              .querySelectorAll(".gallery-item")
+              .forEach((i) => i.classList.remove("touched"));
+            if (!wasTouched) item.classList.add("touched");
+          });
+        });
     </script>
   </body>
 </html>
