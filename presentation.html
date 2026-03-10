@@ -76,54 +76,165 @@
         text-align: center;
       }
 
-      /* Flowchart Styles */
-      .flowchart {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+      /* Scroll Story Styles */
+      #slide-2 {
+        justify-content: flex-start;
         align-items: center;
-        gap: 15px;
-        max-width: 1200px;
+        padding-top: 32px;
+        padding-bottom: 120px;
+        overflow-y: auto;
       }
 
-      .step {
+      #slide-2 h2 {
+        margin-bottom: 16px;
+      }
+
+      .story-hint {
+        margin: 0 0 16px;
+        color: #6a5a52;
+        font-size: 1rem;
+      }
+
+      .flow-story {
+        width: min(1200px, 95vw);
+        max-height: none;
+        overflow: visible;
+        padding: 8px 14px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        border-radius: 20px;
+        background: linear-gradient(180deg, #ffffffcc, #f6f9facc);
+        box-shadow: inset 0 0 0 1px rgba(92, 164, 181, 0.2);
+      }
+
+      .flow-node {
+        border-radius: 16px;
+        border: 2px solid #d6e5e8;
         background: white;
-        border: 3px solid var(--teal);
-        border-radius: 12px;
-        padding: 20px;
-        width: 160px;
-        text-align: center;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+        transition:
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .flow-node:hover,
+      .flow-node[open] {
+        border-color: var(--teal);
+        box-shadow: 0 12px 26px rgba(92, 164, 181, 0.2);
+      }
+
+      .flow-node summary {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        cursor: pointer;
         font-weight: 500;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-        position: relative;
-        transition: transform 0.3s ease;
       }
 
-      .step:hover {
-        transform: translateY(-5px);
-        border-color: var(--orange);
+      .flow-node summary::-webkit-details-marker {
+        display: none;
       }
 
-      .step-number {
+      .summary-number {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
         background: var(--mustard);
         color: var(--brown);
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
+        font-weight: 700;
         display: flex;
-        justify-content: center;
         align-items: center;
-        font-weight: bold;
-        position: absolute;
-        top: -15px;
-        right: -15px;
-        border: 2px solid white;
+        justify-content: center;
+        flex-shrink: 0;
       }
 
-      .arrow {
+      .summary-text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .summary-title {
+        color: #2f3f45;
+        font-size: 1.05rem;
+      }
+
+      .summary-subtitle {
+        color: #6f7b80;
+        font-size: 0.85rem;
+      }
+
+      .summary-chevron {
+        margin-right: auto;
         color: var(--orange);
-        font-size: 2rem;
-        font-weight: bold;
+        font-weight: 700;
+        transition: transform 0.25s ease;
+      }
+
+      .flow-node[open] .summary-chevron {
+        transform: rotate(180deg);
+      }
+
+      .flow-chat {
+        border-top: 1px solid #edf2f3;
+        background: linear-gradient(180deg, #fbfdfe, #f5f8fa);
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .chat-message {
+        max-width: 88%;
+        border-radius: 14px;
+        padding: 10px 12px;
+        white-space: pre-wrap;
+        line-height: 1.48;
+        font-size: 0.94rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      }
+
+      .chat-message.client {
+        align-self: flex-start;
+        background: #ffffff;
+        border: 1px solid #e0e8ea;
+      }
+
+      .chat-message.coordinator {
+        align-self: flex-end;
+        background: #e9f6fa;
+        border: 1px solid #c6e7ef;
+      }
+
+      .chat-message.broadcast {
+        align-self: center;
+        max-width: 95%;
+        background: #f7efe6;
+        border: 1px solid #edd8c0;
+      }
+
+      .chat-message.supplier {
+        align-self: flex-start;
+        background: #f8f6ff;
+        border: 1px solid #e1dbf5;
+      }
+
+      .chat-message.system {
+        align-self: center;
+        background: #fff7ef;
+        border: 1px solid #f0d7bb;
+      }
+
+      .chat-label {
+        display: inline-block;
+        margin-bottom: 6px;
+        font-size: 0.76rem;
+        font-weight: 700;
+        color: #6e5a46;
       }
 
       /* Options Grid Styles */
@@ -229,11 +340,15 @@
         .option-card.recommended {
           transform: scale(1);
         }
-        .flowchart {
-          flex-direction: column;
+        #slide-2 {
+          padding: 24px 18px 120px;
         }
-        .arrow {
-          transform: rotate(90deg);
+        .flow-story {
+          width: 100%;
+          padding: 8px;
+        }
+        .chat-message {
+          max-width: 95%;
         }
       }
     </style>
@@ -256,56 +371,275 @@
 
       <div class="slide" id="slide-2">
         <h2>תהליך העבודה: מקצה לקצה</h2>
-        <div class="flowchart">
-          <div class="step">
-            <div class="step-number">1</div>
-            פנייה ראשונית<br /><span style="font-size: 0.8rem; color: #666"
-              >לקוח יוצר קשר</span
-            >
-          </div>
-          <div class="arrow">&larr;</div>
-          <div class="step">
-            <div class="step-number">2</div>
-            השלמת פרטים<br /><span style="font-size: 0.8rem; color: #666"
-              >איסוף נתונים לוגיסטיים</span
-            >
-          </div>
-          <div class="arrow">&larr;</div>
-          <div class="step">
-            <div class="step-number">3</div>
-            קול קורא<br /><span style="font-size: 0.8rem; color: #666"
-              >שליחה לקבוצת הספקים</span
-            >
-          </div>
-          <div class="arrow">&larr;</div>
-          <div class="step">
-            <div class="step-number">4</div>
-            הצעה ראשונית<br /><span style="font-size: 0.8rem; color: #666"
-              >בחירת אופציות מול הלקוח</span
-            >
-          </div>
-          <div class="arrow">&larr;</div>
-          <div class="step">
-            <div class="step-number">5</div>
-            אישור ספקים<br /><span style="font-size: 0.8rem; color: #666"
-              >שריון ותיאום סופי</span
-            >
-          </div>
-          <div class="arrow">&larr;</div>
-          <div
-            class="step"
-            style="border-color: var(--orange); background-color: #fff9f5"
-          >
-            <div
-              class="step-number"
-              style="background: var(--orange); color: white"
-            >
-              6
+        <p class="story-hint">גללו מטה ופתחו כל שלב כדי לראות את הטקסט המלא</p>
+        <div class="flow-story">
+          <details class="flow-node" open>
+            <summary>
+              <span class="summary-number">1</span>
+              <span class="summary-text">
+                <span class="summary-title">פנייה ראשונית</span>
+                <span class="summary-subtitle">הלקוח פותח שיחה ומציג צורך</span>
+              </span>
+              <span class="summary-chevron">⌄</span>
+            </summary>
+            <div class="flow-chat">
+              <div class="chat-message client">
+                <span class="chat-label">אדגר (לקוח)</span>
+                היי אור מה נשמע?? קיבלתי את הטלפון שלך מאברשומי והבנתי שאת מרכזת את פרויקט התיירות של בית שאן!
+                שמי אדגר ואני מרכז קבוצת מנהיגות נוער מנוף הגליל.
+                בחודש הבא אנחנו מגיעים לעמק המעיינות ואנחנו מחפשים שניים שלושה רעיונות לפעילויות שיספרו את הסיפור של העיר שלכם.
+                יש לך איך לעזור לי עם זה?
+              </div>
             </div>
-            הצעת מחיר מפורטת<br /><span style="font-size: 0.8rem; color: #666"
-              >לחתימה וסגירה</span
-            >
-          </div>
+          </details>
+
+          <details class="flow-node">
+            <summary>
+              <span class="summary-number">2</span>
+              <span class="summary-text">
+                <span class="summary-title">השלמת פרטים</span>
+                <span class="summary-subtitle">תשאול ממוקד + תשובות מסודרות</span>
+              </span>
+              <span class="summary-chevron">⌄</span>
+            </summary>
+            <div class="flow-chat">
+              <div class="chat-message coordinator">
+                <span class="chat-label">אור (מיזם)</span>
+                אהלן אדגר, נעים מאוד! איזה כיף לשמוע שאתם מגיעים מהשכנים בנוף הגליל.
+                לגמרי במקום הנכון - אנחנו נשמח לתפור לכם ביקור שיחבר את החבר'ה לסיפור הייחודי של בית שאן.
+
+                כדי שאוכל לשלוח לך 2-3 הצעות מדויקות שמתאימות לתקציב וללו"ז שלכם, אשמח אם תוכל לענות לי על כמה פרטים קטנים:
+                מתי בדיוק בחודש הבא? (תאריך ספציפי או טווח).
+                כמה חבר'ה אתם? (גודל קבוצה משוער).
+                מה מסגרת הזמן שלכם בעיר? (למשל: שעתיים של פעילות, או יום שלם כולל אוכל?).
+                דגש לתוכן: מחפשים משהו אקטיבי/סיור שטח, או יותר מפגש ושיחה עם דמויות מקומיות?
+                תקציב משוער: (זה יעזור לי לדעת אם להציע פעילויות בוטיק או סיורים קהילתיים נגישים).
+
+                ברגע שתשלח לי את אלו, אני מריצה בדיקה מול הספקים המקומיים שלנו וחוזרת אליך עם תוכנית.
+              </div>
+              <div class="chat-message client">
+                <span class="chat-label">אדגר (לקוח)</span>
+                1. 12/4 בין השעות 9:00-15:00
+                2. בערך 30 חבר'ה
+                3. אנחנו נהיה בעיר לאורך כל היום כ-6 שעות
+                4. אנחנו רוצים להכיר יותר את העיר דרך פעילויות מגוונות - פתוחים להצעות: סדנאות/שיחות/סיורים
+                5. התקציב שלנו עומד על 9000 ש"ח
+              </div>
+            </div>
+          </details>
+
+          <details class="flow-node">
+            <summary>
+              <span class="summary-number">3</span>
+              <span class="summary-text">
+                <span class="summary-title">קול קורא</span>
+                <span class="summary-subtitle">פרסום בקשת ספקים + קבלת הצעות</span>
+              </span>
+              <span class="summary-chevron">⌄</span>
+            </summary>
+            <div class="flow-chat">
+              <div class="chat-message broadcast">
+                <span class="chat-label">קול קורא רשמי</span>
+                📢 קול קורא: יום סיור ומנהיגות - קבוצת נוער מנוף הגליל
+                תאריך הפעילות: 12/4 (יום ראשון)
+                שעות: 09:00-15:00 (יום מלא)
+                משתתפים: כ-30 בני נוער (קבוצת מנהיגות)
+                הקונספט: "הסיפור של בית שאן" - הכרת העיר דרך השטח, האנשים והעשייה המקומית.
+
+                דרושים ספקים לקטגוריות הבאות:
+                סיור חווייתי/ערכי: סיור שמחבר להיסטוריה או לקהילה (לא רק "אבנים").
+                סדנה/מפגש: שיחה עם דמות מקומית מעוררת השראה או סדנה יצירתית/אקטיבית.
+                הסעדה: ארוחת צהריים כשרה (עדיפות למקום עם "סיפור" או אירוח ביתי).
+                מרחב פעילות: מקום ממוזג/מוצל לפעילות קבוצתית עצמאית.
+
+                ספקים רלוונטיים - נא לשלוח הצעה בפרטי בפורמט הבא:
+                1. שם העסק והפעילות.
+                2. משך הפעילות.
+                3. מחיר כולל מע"מ (ל-30 איש).
+                4. זמינות ב-12/4.
+              </div>
+              <div class="chat-message supplier">
+                <span class="chat-label">הצעה 1 - המטבח של מזל</span>
+                "היי אור, מה שלומך? נשמע פרויקט מקסים.
+                שם העסק: המטבח של מזל - אירוח ביתי וסיפורי שכונות.
+                פעילות: ארוחת צהריים ביתית מלאה (כשר למהדרין) + שיחה קצרה שלי על החיים בשיכון א' פעם והיום, ואיך הקמתי עסק בגיל 50.
+                משך: שעה וחצי.
+                מחיר ל-30 איש: 2,100 ש"ח (70 ש"ח לאדם).
+                זמינות ב-12/4: פנויה, בשמחה."
+              </div>
+              <div class="chat-message supplier">
+                <span class="chat-label">הצעה 2 - איתי הדרכות</span>
+                "אהלן, מדבר איתי מ'סיורי עמק'. רלוונטי מאוד לקבוצת מנהיגות.
+                שם העסק: איתי הדרכות - סיור 'בית שאן: בין חורבן לתקומה'.
+                פעילות: סיור רגלי שמתחיל בגשר הרומי ומסתיים במרכז העיר החדש. דגש על היסטוריה ציונית ובניית הקהילה, לא רק ארכיאולוגיה.
+                משך: שעתיים וחצי.
+                מחיר ל-30 איש: 1,200 ש"ח.
+                זמינות ב-12/4: פנוי בבוקר (09:00-12:00)."
+              </div>
+              <div class="chat-message supplier">
+                <span class="chat-label">הצעה 3 - צבע מקומי</span>
+                "היי, ראיתי את הקול קורא. אני יכולה להציע משהו מאוד אקטיבי לנוער.
+                שם העסק: סטודיו 'צבע מקומי' - אמנות רחוב קהילתית.
+                פעילות: סדנת גרפיטי/ציור קיר משותף. אנחנו מדברים על איך משנים פנים של שכונה בעזרת צבע ואמנות, והם מתנסים ביצירה על לוחות עץ שייקחו איתם.
+                משך: שעה ורבע.
+                מחיר ל-30 איש: 1,800 ש"ח (כולל כל החומרים).
+                זמינות ב-12/4: פתוחה להזמנות."
+              </div>
+              <div class="chat-message supplier">
+                <span class="chat-label">הצעה 4 - HUB בית שאן</span>
+                "אור יקירתי, מעולה שאת עושה את זה. הנה ההצעה של ה'האב':
+                שם העסק: המרחב ליזמות צעירה - HUB בית שאן.
+                פעילות: השכרת אולם ממוזג עם מקרן וסאונד + שיחה של 20 דקות עם אחד היזמים שלנו על סטרטאפ חברתי בפריפריה.
+                משך: שעתיים (כולל זמן לפעילות עצמאית שלהם).
+                מחיר ל-30 איש: 600 ש"ח.
+                זמינות ב-12/4: פנוי בין 13:00 ל-15:00."
+              </div>
+              <div class="chat-message supplier">
+                <span class="chat-label">הצעה 5 - הניצחון</span>
+                "היי אור, אני סוגר לך את הפינה של האוכל.
+                שם העסק: פלאפל וגריל 'הניצחון'.
+                פעילות: ארוחה עסקית בצלחת (פרגיות/קבב/תוספות) במתחם מקורה ליד השוק. מהיר, משביע וכשר.
+                משך: 45 דקות.
+                מחיר ל-30 איש: 1,650 ש"ח (55 ש"ח למנה כולל שתייה קלה).
+                זמינות ב-12/4: פנוי."
+              </div>
+              <div class="chat-message supplier">
+                <span class="chat-label">הצעה 6 - חוות שורשים</span>
+                "שלום, שמי יואב מהחווה החקלאית-קהילתית.
+                שם העסק: חוות 'שורשים'.
+                פעילות: סיור חקלאי אקטיבי - עבודה בגינה הקהילתית בשילוב שיחה על קיימות ומנהיגות סביבתית בבית שאן.
+                משך: שעה וחצי.
+                מחיר ל-30 איש: 900 ש"ח.
+                זמינות ב-12/4: פנוי בתיאום מראש."
+              </div>
+            </div>
+          </details>
+
+          <details class="flow-node">
+            <summary>
+              <span class="summary-number">4</span>
+              <span class="summary-text">
+                <span class="summary-title">הצעה ראשונית</span>
+                <span class="summary-subtitle">שתי חלופות + בחירת לקוח</span>
+              </span>
+              <span class="summary-chevron">⌄</span>
+            </summary>
+            <div class="flow-chat">
+              <div class="chat-message coordinator">
+                <span class="chat-label">הצעה ללקוח</span>
+                הצעה ליום סיור ומנהיגות בבית שאן | תוכנית 'מנוף הגליל' (12/4)
+
+                אדגר היקר, בהמשך לשיחתנו, ריכזתי עבורכם שתי אפשרויות מרכזיות ליום חווייתי בבית שאן.
+                שתי האופציות כוללות תוכן ערכי, מפגש עם דמויות מקומיות וארוחה בשרית כשרה.
+
+                אופציה 1: "מנהיגות, צבע וקהילה" (המסלול החברתי)
+                09:00-11:30: סיור "בין חורבן לתקומה" (איתי הדרכות).
+                11:45-13:00: סדנת "צבע מקומי" (סטודיו צבע מקומי).
+                13:15-14:45: אירוח ביתי וסיפור אישי (המטבח של מזל).
+                15:00: סיום וסיכום יום.
+
+                אופציה 2: "יזמות, סביבה ועתיד" (המסלול האקטיבי)
+                09:30-11:00: מנהיגות ירוקה בחלוץ (חוות שורשים).
+                11:15-12:30: סיור היסטורי קצר.
+                12:45-13:30: ארוחת צהריים ב"הניצחון".
+                13:45-15:00: מפגש יזמות ב-HUB.
+
+                מידע לוגיסטי ותמחור:
+                עלות משוערת למשתתף: כ-180 עד 220 ש"ח.
+                המחיר כולל: תיאום מלא, כלל הפעילויות, הדרכות, חומרי סדנאות וארוחת צהריים.
+                המחיר הסופי ייקבע לאחר בחירת המסלול וסגירה סופית מול הספקים.
+                שירות זה הינו שירות ריכוז ותיאום.
+              </div>
+              <div class="chat-message client">
+                <span class="chat-label">תשובת הלקוח</span>
+                בואי נלך על אופציה 2, אבל עם האוכל מאופציה 1.
+              </div>
+            </div>
+          </details>
+
+          <details class="flow-node">
+            <summary>
+              <span class="summary-number">5</span>
+              <span class="summary-text">
+                <span class="summary-title">אישור ספקים</span>
+                <span class="summary-subtitle">הודעות נפרדות לכל ספק נבחר</span>
+              </span>
+              <span class="summary-chevron">⌄</span>
+            </summary>
+            <div class="flow-chat">
+              <div class="chat-message coordinator">
+                <span class="chat-label">ליואב - חוות שורשים</span>
+                "היי יואב, סגור! קבוצת המנהיגות מנוף הגליל (30 בני נוער) מגיעה אליך ב-12/4.
+                לו"ז: 09:00 עד 10:30.
+                פעילות: סיור חקלאי ושיחה על מנהיגות סביבתית.
+                עלות שסוכמה: 900 ש"ח. הלקוח ישלם/יעביר התחייבות ישירות מולך, אעביר להם את פרטי הקשר שלך להסדרת התשלום."
+              </div>
+              <div class="chat-message coordinator">
+                <span class="chat-label">לאיתי - איתי הדרכות</span>
+                "אהלן איתי, אישרנו את הסיור לקבוצת המנהיגות ב-12/4.
+                בגלל אילוצי לו"ז, נצטרך לקצר את הסיור לשעה וחצי (10:45 עד 12:15). התקציב נשאר זהה (1,200 ש"ח) כדי שלא תיפגע.
+                דגש: היסטוריה ציונית ובניית הקהילה.
+                אעביר ללקוח את הטלפון שלך לסגירת תשלום מולך."
+              </div>
+              <div class="chat-message coordinator">
+                <span class="chat-label">למזל - המטבח של מזל</span>
+                "מזל היקרה, איזה כיף! הקבוצה מנוף הגליל בחרה בך לארוחת הצהריים ב-12/4.
+                מדובר ב-30 בני נוער רעבים :)
+                לו"ז: 12:30 עד 14:00.
+                נשמח לארוחה המלאה פלוס השיחה שלך על יזמות בשיכון.
+                עלות שסוכמה: 2,100 ש"ח (70 לאדם). מקשרת בינך לבין אדגר להסדרת התשלום."
+              </div>
+              <div class="chat-message coordinator">
+                <span class="chat-label">ל-HUB בית שאן</span>
+                "היי, סגרנו את הביקור של קבוצת מנוף הגליל אצלכם ב-12/4!
+                לו"ז: 14:15 עד 15:00 (הם יגיעו אחרי ארוחת צהריים לסיכום היום).
+                נשמח למרחב ממוזג ולשיחה קצרה על סטארטאפ חברתי.
+                עלות: 600 ש"ח. אדגר איש הקשר ייצור קשר להסדרת התשלום."
+              </div>
+            </div>
+          </details>
+
+          <details class="flow-node">
+            <summary>
+              <span class="summary-number">6</span>
+              <span class="summary-text">
+                <span class="summary-title">תוכנית והצעת מחיר סופית</span>
+                <span class="summary-subtitle">מסמך סגירה רשמי לאישור הלקוח</span>
+              </span>
+              <span class="summary-chevron">⌄</span>
+            </summary>
+            <div class="flow-chat">
+              <div class="chat-message system">
+                <span class="chat-label">נוסח סופי לחתימה</span>
+                **הנדון: סיכום יום סיור ומנהיגות - "מנוף הגליל" בבית שאן (12/4)**
+
+                אדגר שלום,
+                שמחים שבחרתם לשלב את הטוב מכל העולמות! בנינו עבורכם יום שמתחיל בעבודת אדמה, עובר דרך ההיסטוריה המקומית, ממשיך לאירוח ביתי אותנטי ומסתיים בחדשנות ויזמות.
+
+                להלן הלו"ז המאושר ופירוט העלויות:
+                09:00-10:30 | מנהיגות סביבתית - חוות "שורשים"
+                10:45-12:15 | בין חורבן לתקומה - איתי הדרכות
+                12:30-14:00 | סיפורי שכונות וארוחת צהריים - המטבח של מזל
+                14:15-15:00 | סטארטאפ בפריפריה - HUB בית שאן
+
+                עלות ספקים כוללת: 4,800 ש"ח כולל מע"מ.
+                דמי ניהול, בניית תוכן ותיאום לוגיסטי: 1,500 ש"ח + מע"מ.
+                סה"כ משוער ליום הפעילות: 6,300 ש"ח (כ-210 ש"ח למשתתף).
+
+                אופן ביצוע התשלום:
+                על מנת לחסוך בעלויות תיווך, התשלום יבוצע ישירות מול הספקים המקומיים.
+                מצורפים פרטי הקשר להוצאת הזמנות עבודה/העברה בנקאית:
+                1. חוות שורשים
+                2. איתי הדרכות
+                3. המטבח של מזל
+                4. HUB בית שאן
+                5. מיזם "בית שאן מבפנים" (דמי תיאום)
+
+                *הערה: באחריות הלקוח לוודא מול כל ספק את תנאי הביטול הפרטניים שלו מראש.*
+                **לאישור התוכנית ותחילת שריון, אנא השב למייל/הודעה זו באות "מאושר".**
+              </div>
+            </div>
+          </details>
         </div>
       </div>
 
