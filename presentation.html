@@ -316,6 +316,159 @@
         margin-bottom: 5px;
       }
 
+      .insight-slide {
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 42px;
+        padding-bottom: 120px;
+        overflow-y: auto;
+      }
+
+      .slide-intro {
+        max-width: 980px;
+        margin: -12px auto 28px;
+        text-align: center;
+        line-height: 1.7;
+        font-size: 1.12rem;
+        color: #5f5149;
+      }
+
+      .dilemma-focus {
+        width: min(980px, 100%);
+        margin-top: 0;
+        padding: 36px 34px;
+        border-radius: 24px;
+        background: linear-gradient(145deg, #ffffff, #f5fafb);
+        border: 1px solid #dbe9ed;
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        line-height: 1.8;
+        font-size: 1.18rem;
+        color: #4f433b;
+      }
+
+      .takeaway-box {
+        width: min(1120px, 100%);
+        margin-top: 24px;
+        padding: 22px 26px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #f2f9fa, #fff7ef);
+        border: 1px solid rgba(92, 164, 181, 0.25);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+        text-align: right;
+      }
+
+      .takeaway-box strong {
+        color: var(--brown);
+      }
+
+      #slide-4 {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      #slide-4 .takeaway-box {
+        width: min(980px, 100%);
+        margin-top: 0;
+        text-align: center;
+        font-size: 1.08rem;
+        line-height: 1.85;
+      }
+
+      #slide-4 .takeaway-box strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .dilemma-connector {
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: #fff;
+        background: linear-gradient(135deg, var(--teal), #77b6c4);
+        box-shadow: 0 8px 16px rgba(92, 164, 181, 0.35);
+      }
+
+      .package-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+        width: min(1160px, 100%);
+      }
+
+      .business-note {
+        width: min(1040px, 100%);
+        margin: 0 0 24px;
+        padding: 18px 22px;
+        border-radius: 18px;
+        background: #fffdf9;
+        border: 1px solid #ecdcc7;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+        text-align: right;
+        line-height: 1.75;
+        color: #5a4a40;
+      }
+
+      .business-note strong {
+        color: var(--brown);
+      }
+
+      .package-card {
+        background: white;
+        border-radius: 20px;
+        padding: 28px 24px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        border-top: 8px solid var(--mustard);
+        text-align: right;
+      }
+
+      .package-card:nth-child(2) {
+        border-top-color: var(--teal);
+      }
+
+      .package-card:nth-child(3) {
+        border-top-color: var(--antique-rose);
+      }
+
+      .package-tag {
+        display: inline-block;
+        margin-bottom: 14px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: #f4efe8;
+        color: #6a5648;
+        font-size: 0.86rem;
+        font-weight: 700;
+      }
+
+      .package-card h3 {
+        margin: 0 0 12px;
+        color: var(--brown);
+        font-size: 1.35rem;
+      }
+
+      .package-card p {
+        margin: 0 0 16px;
+        line-height: 1.65;
+      }
+
+      .package-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.96rem;
+      }
+
+      .package-meta span {
+        display: block;
+        padding-top: 8px;
+        border-top: 1px solid #eee6dc;
+      }
+
       /* Controls */
       .controls {
         position: absolute;
@@ -365,12 +518,18 @@
         #slide-3 {
           padding: 24px 18px 120px;
         }
+        .insight-slide {
+          padding: 24px 18px 120px;
+        }
         .flow-story {
           width: 100%;
           padding: 8px;
         }
         .chat-message {
           max-width: 95%;
+        }
+        .package-grid {
+          grid-template-columns: 1fr;
         }
         .controls {
           bottom: 14px;
@@ -727,6 +886,82 @@
               >
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="slide insight-slide" id="slide-4">
+        <h2>הדילמה העסקית: מה מוכרים, ומה מפעילים?</h2>
+        <div class="dilemma-focus">
+          כרגע נוצר פער בין מודל שקל יחסית להפעיל לבין מודל שקל יותר למכור. מצד אחד,
+          תשלום מפוצל שומר על פשטות ותיאום קל; מצד שני, הוא לא בהכרח מייצר חוויית
+          רכישה מספיק אטרקטיבית ללקוח.
+        </div>
+        <div class="dilemma-connector" aria-hidden="true">↓</div>
+        <div class="takeaway-box">
+          <strong>המסקנה:</strong>
+          בשלב הזה לא בטוח שכדאי להתחיל כמתאם תיירותי כללי מול ספקים חיצוניים. נדרש מודל שניתן
+          למכור בבהירות ובפשטות, בלי להיכנס מיד לעומס התפעולי, האחריות והמורכבות של
+          תשלום אחוד מלא.
+        </div>
+      </div>
+
+      <div class="slide insight-slide" id="slide-5">
+        <h2>פתרון לשלב ההרצה: להתחיל כספק עם חבילות מדף</h2>
+        <p class="slide-intro">
+          במקום להתחיל כמתאם תיירותי של יום שלם, אפשר להתחיל כספק שמוכר חוויה מוגדרת
+          היטב. כלומר, לבנות 2-3 חבילות תוכן ושירותים של חברי המיזם עצמו, לתמחר אותן
+          בצורה ברורה, ולשווק אותן כ<strong>מוצר מדף</strong> לקבוצות מתעניינות.
+        </p>
+        <div class="business-note">
+          <strong>מבחינת המודל העסקי:</strong>
+          הלקוח משלם ומתאם מול גורם אחד בלבד, המיזם. מאחורי הקלעים, בשלב ההרצה, החבילות הראשונות ייבנו סביב היצע זמין ומוגדר של חברי המיזם
+          ,והמיזם יוכל לשלם להם לפי המסגרת
+          המתאימה: כעוסקים פטורים, בתלוש, או בתחילת הדרך גם על בסיס התנדבות.
+        </div>
+        <div class="package-grid">
+          <div class="package-card">
+            <span class="package-tag">אפשרות 1</span>
+            <h3>מנהיגות, זהות ומקום</h3>
+            <p>
+              פאנל מנהיגות מקומי בשילוב סיור קצר שמחבר בין הסיפור
+              ההיסטורי של העיר לבין ההווה הקהילתי שלה.
+            </p>
+            <div class="package-meta">
+              <span><strong>לקהל יעד:</strong> משלחות, נוער, תוכניות מנהיגות</span>
+              <span><strong>ערך מרכזי:</strong> תוכן עומק עם חיבור לאנשים ולמקום</span>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <span class="package-tag">אפשרות 2</span>
+            <h3>פעילות גיבוש והשראה</h3>
+            <p>
+              סדנת ODT בשילוב הרצאה או שיחה עם דמות מקומית על יזמות, עשייה
+              חברתית וצמיחה בפריפריה.
+            </p>
+            <div class="package-meta">
+              <span><strong>לקהל יעד:</strong> צוותים, קבוצות צעירים, ארגונים</span>
+              <span><strong>ערך מרכזי:</strong> חוויה דינמית עם מסר ברור ויישומי</span>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <span class="package-tag">אפשרות 3</span>
+            <h3>סיפור עירוני עם מפגש אנושי</h3>
+            <p>
+              סיור ממוקד בשכונה, באתר או ציר תוכן נבחר, המשלב מפגש אישי, אירוח או
+              סדנה של אחד מחברי המיזם.
+            </p>
+            <div class="package-meta">
+              <span><strong>לקהל יעד:</strong> קבוצות מבקרים, קהילות, ארגונים</span>
+              <span><strong>ערך מרכזי:</strong> מוצר גמיש שקל להסביר, לתמחר ולשכפל</span>
+            </div>
+          </div>
+        </div>
+        <div class="takeaway-box">
+          <strong>למה זה נכון להרצה:</strong>
+          כך אפשר לבדוק ביקוש אמיתי, לדייק מסרים ומחירים, לבנות מוניטין ולייצר
+          הצלחות ראשונות, ורק אחר כך להחליט אם ומתי להתרחב למודל תיאום רחב יותר.
         </div>
       </div>
     </div>
